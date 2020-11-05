@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   tf
   sensor_msgs
-  cv_bridge
+  #  cv_bridge
   std_msgs
   image_transport
   mavros_msgs
@@ -146,10 +146,10 @@ target_link_libraries(${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
 )
 
-add_executable(t265_fisheye_undistort_node src/t265_fisheye_undistort.cpp)
-target_link_libraries(t265_fisheye_undistort_node
-  ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}
-)
+#add_executable(t265_fisheye_undistort_node src/t265_fisheye_undistort.cpp)
+#target_link_libraries(t265_fisheye_undistort_node
+#  ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}
+#)
 
 #############
 ## Install ##

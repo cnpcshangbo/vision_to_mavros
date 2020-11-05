@@ -201,7 +201,7 @@ int main(int argc, char** argv)
         quat_cam_to_body_x = tf::createQuaternionFromRPY(roll_cam, 0, 0);
         quat_cam_to_body_y = tf::createQuaternionFromRPY(0, pitch_cam, 0);
         quat_cam_to_body_z = tf::createQuaternionFromRPY(0, 0, yaw_cam);
-        
+ 
         // 3) Rotate body frame 90 degree (align body x with world y at launch)
         quat_rot_z = tf::createQuaternionFromRPY(0, 0, -gamma_world);
 

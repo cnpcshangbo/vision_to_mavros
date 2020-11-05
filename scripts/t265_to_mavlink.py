@@ -46,8 +46,9 @@ def progress(string):
 #######################################
 
 # Default configurations for connection to the FCU
-connection_string_default = '/dev/ttyUSB0'
+#connection_string_default = '/dev/ttyTHS2'
 connection_baudrate_default = 921600
+connection_string_default = '127.0.0.1:14550' 
 connection_timeout_sec_default = 5
 
 # Transformation to convert different camera orientations to NED convention. Replace camera_orientation_default for your configuration.
@@ -525,18 +526,18 @@ signal.setitimer(signal.ITIMER_REAL, 0)  # cancel alarm
 sched = BackgroundScheduler()
 
 if enable_msg_vision_position_estimate:
-    sched.add_job(send_vision_position_estimate_message, 'interval', seconds = 1/vision_position_estimate_msg_hz)
+    sched.add_job(send_vision_position_estimate_message, 'interval', seconds = 1./vision_position_estimate_msg_hz)
 
 if enable_msg_vision_position_delta:
-    sched.add_job(send_vision_position_delta_message, 'interval', seconds = 1/vision_position_delta_msg_hz)
+    sched.add_job(send_vision_position_delta_message, 'interval', seconds = 1./vision_position_delta_msg_hz)
     send_vision_position_delta_message.H_aeroRef_PrevAeroBody = tf.quaternion_matrix([1,0,0,0]) 
     send_vision_position_delta_message.prev_time_us = int(round(time.time() * 1000000))
 
 if enable_msg_vision_speed_estimate:
-    sched.add_job(send_vision_speed_estimate_message, 'interval', seconds = 1/vision_speed_estimate_msg_hz)
+    sched.add_job(send_vision_speed_estimate_message, 'interval', seconds = 1./vision_speed_estimate_msg_hz)
 
 if enable_update_tracking_confidence_to_gcs:
-    sched.add_job(update_tracking_confidence_to_gcs, 'interval', seconds = 1/update_tracking_confidence_to_gcs_hz_default)
+    sched.add_job(update_tracking_confidence_to_gcs, 'interval', seconds = 1./update_tracking_confidence_to_gcs_hz_default)
     update_tracking_confidence_to_gcs.prev_confidence_level = -1
 
 # A separate thread to monitor user input
