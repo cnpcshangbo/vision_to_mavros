@@ -3,3 +3,6 @@
 *.parm
 *.tlog*
 __pycache__/
+librealsense2.so
+scripts/pyrealsense2.so
+log.txt
